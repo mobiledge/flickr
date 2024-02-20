@@ -40,11 +40,11 @@ You can learn more about the Flickr API [here](https://www.flickr.com/services/f
 3. Build and run the app on your iOS device or simulator.
 
 ### TODO
-[] Support multiple tags
-[] Format pubilished date
-[] Acessibility support
-[] Additional Unit tests & UI tests
-[] and more...
+- [ ] Support multiple tags
+- [ ] Format pubilished date
+- [ ] Acessibility support
+- [ ] Additional Unit tests & UI tests
+- [ ] and more...
 
 ### Contributions
 
