@@ -22,8 +22,10 @@ Replace `<TAGS>` with the search terms entered by the user.
 You can learn more about the Flickr API [here](https://www.flickr.com/services/feeds/).
 
 ### Screenshots
-![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 17](https://github.com/mobiledge/flickr/assets/6307250/b4c640ce-1b64-41e7-8475-9a242a645dc1)
-![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 34](https://github.com/mobiledge/flickr/assets/6307250/97ad8c49-2af7-4003-9e68-e2ff9f19e431)
+
+| Screenshot 1    | Screenshot 2 |
+| -------- | ------- |
+| ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 17](https://github.com/mobiledge/flickr/assets/6307250/b4c640ce-1b64-41e7-8475-9a242a645dc1) | ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 34](https://github.com/mobiledge/flickr/assets/6307250/97ad8c49-2af7-4003-9e68-e2ff9f19e431) |
 
 ### Technologies Used
 
