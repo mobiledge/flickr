@@ -4,7 +4,7 @@ This iOS application allows users to search for images on Flickr and view them i
 
 ### Features
 
-- Search for images on Flickr using single or multiple keywords.
+- Search for images on Flickr using a keyword
 - Display search results in a grid layout.
 - View thumbnail images of search results.
 - Tap on an image to view it in full size.
@@ -31,7 +31,7 @@ You can learn more about the Flickr API [here](https://www.flickr.com/services/f
 
 - Swift
 - SwiftUI
-- URLSession
+- async/await
 
 ### Installation
 
