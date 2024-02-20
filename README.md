@@ -39,6 +39,13 @@ You can learn more about the Flickr API [here](https://www.flickr.com/services/f
 2. Open the project in Xcode.
 3. Build and run the app on your iOS device or simulator.
 
+### TODO
+[] Support multiple tags
+[] Format pubilished date
+[] Acessibility support
+[] Additional Unit tests & UI tests
+[] and more...
+
 ### Contributions
 
 Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests.
