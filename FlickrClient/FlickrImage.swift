@@ -11,11 +11,11 @@ struct FlickrImage: Codable, Identifiable {
     let title: String
     let link: String
     let media: [String: String]
-    let date_taken: String
+    let dateTaken: Date
     let description: String
     let published: Date
     let author: String
-    let author_id: String
+    let authorId: String
     let tags: String
 
     var id: String {
@@ -31,6 +31,7 @@ struct FlickrImage: Codable, Identifiable {
     static func previewImage() -> FlickrImage {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         guard let url = Bundle.main.url(forResource: "testData", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let response = try? decoder.decode(APIResponse.self, from: data),

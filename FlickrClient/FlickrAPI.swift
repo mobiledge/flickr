@@ -32,6 +32,7 @@ class FlickrAPI {
         // Parse JSON response
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         let response = try decoder.decode(APIResponse.self, from: data)
         return response.items
     }
