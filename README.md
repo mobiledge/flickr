@@ -65,6 +65,10 @@ The grid view's column count is adjusted in response to changes in device orient
 - SwiftUI
 - async/await
 
+**HTML Content Rendering**
+
+The app utilizes the [RichText](https://github.com/NuPlay/RichText) third-party framework to display HTML content within Flickr image descriptions. 
+
 ### Installation
 
 1. Clone the repository.
@@ -72,9 +76,12 @@ The grid view's column count is adjusted in response to changes in device orient
 3. Build and run the app on your iOS device or simulator.
 
 ### TODO
-- [ ] Support multiple tags
-- [ ] Format pubilished date
-- [ ] Acessibility support
+- [x] Display a progress indicator when loading without blocking the UI
+- [x] Support displaying error states
+- [x] Display formatted published date
+- [x] Support Dynamic Type & Dark Mode
+- [x] Acessibility support (for Images)
+- [x] Support landscape orientations 
 - [ ] Additional Unit tests & UI tests
 - [ ] and more...
 
