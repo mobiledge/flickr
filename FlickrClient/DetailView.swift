@@ -13,7 +13,8 @@ struct DetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading, spacing: 20.0) {
+
                 AsyncImage(url: item.url) { image in
                     image
                         .resizable()
@@ -25,21 +26,37 @@ struct DetailView: View {
                 Text(item.title)
                     .font(.title)
                     .foregroundStyle(.primary)
+                    .padding(.horizontal)
 
-                Text(item.author)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+                VStack(alignment: .leading) {
+                    Label("Author", systemImage: "person.circle")
+                        .font(.headline)
+                    Text(item.author)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal)
 
-                Text(item.date_taken)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+                VStack(alignment: .leading) {
+                    Label("Taken on", systemImage: "calendar.circle")
+                        .font(.headline)
+                    Text(item.date_taken)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal)
 
-                RichText(html: item.description)
-                    .padding()
+                VStack(alignment: .leading) {
+                    Label("Description", systemImage: "calendar.circle")
+                        .font(.headline)
+                    RichText(html: item.description)
+                }
+                .padding(.horizontal)
 
                 Spacer()
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
