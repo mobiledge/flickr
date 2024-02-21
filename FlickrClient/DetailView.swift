@@ -10,11 +10,11 @@ import RichText
 
 struct DetailView: View {
     let item: FlickrImage
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20.0) {
-
+                
                 AsyncImage(url: item.url) { image in
                     image
                         .resizable()
@@ -22,12 +22,12 @@ struct DetailView: View {
                 } placeholder: {
                     ProgressView()
                 }
-
+                
                 Text(item.title)
                     .font(.title)
                     .foregroundStyle(.primary)
                     .padding(.horizontal)
-
+                
                 VStack(alignment: .leading) {
                     Label("Author", systemImage: "person.circle")
                         .font(.headline)
@@ -36,23 +36,23 @@ struct DetailView: View {
                         .foregroundStyle(.secondary)
                 }
                 .padding(.horizontal)
-
+                
                 VStack(alignment: .leading) {
-                    Label("Taken on", systemImage: "calendar.circle")
+                    Label("Published", systemImage: "calendar.circle")
                         .font(.headline)
-                    Text(item.date_taken)
+                    Text(item.published.formatted())
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
                 .padding(.horizontal)
-
+                
                 VStack(alignment: .leading) {
                     Label("Description", systemImage: "calendar.circle")
                         .font(.headline)
                     RichText(html: item.description)
                 }
                 .padding(.horizontal)
-
+                
                 Spacer()
             }
         }

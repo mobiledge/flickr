@@ -30,7 +30,9 @@ class FlickrAPI {
         let data = try await networkClient.data(from: url)
 
         // Parse JSON response
-        let response = try JSONDecoder().decode(APIResponse.self, from: data)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let response = try decoder.decode(APIResponse.self, from: data)
         return response.items
     }
 
