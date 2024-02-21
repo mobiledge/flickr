@@ -27,6 +27,20 @@ You can learn more about the Flickr API [here](https://www.flickr.com/services/f
 | -------- | ------- |
 | ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 17](https://github.com/mobiledge/flickr/assets/6307250/b4c640ce-1b64-41e7-8475-9a242a645dc1) | ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 34](https://github.com/mobiledge/flickr/assets/6307250/97ad8c49-2af7-4003-9e68-e2ff9f19e431) |
 
+### App Loading States
+
+The app supports multiple states to provide a dynamic and informative user experience. Here is an overview of the supported states along with screenshots for reference:
+
+| Initial State | Loading State | Empty State | Error State | Loaded State |
+|---------------|---------------|-------------|-------------|--------------|
+| Presented initially when the app is launched. Encourages users to discover photos on Flickr and enter keywords for browsing. | Displayed during data retrieval or any asynchronous operation. Shows a spinner to indicate ongoing loading. | Appears when a search or request returns no results. Displays a predefined search icon to indicate an empty result set. | Shown when an error occurs during data fetching or processing. An error icon and a localized error message provide details about the issue. | Presented when the cotent loads successfully. | 
+| ![1 initial -state](https://github.com/mobiledge/flickr/assets/6307250/e96a14f5-702f-4904-ad7f-ffea70ba5509) | ![2 loading-state](https://github.com/mobiledge/flickr/assets/6307250/5bbaefd3-800a-4ed4-8d76-39bb483b4980) | ![3 empty-state](https://github.com/mobiledge/flickr/assets/6307250/c818b896-5598-45ee-a2ed-2d39ae878bd2) | ![4 error-state](https://github.com/mobiledge/flickr/assets/6307250/01c19b50-958d-4e42-a21a-3a41ffdd994b) | ![00 grid-view](https://github.com/mobiledge/flickr/assets/6307250/854f59ec-2687-4d2d-adc6-fa7a436c9308) |
+
+
+
+
+
+
 ### Technologies Used
 
 - Swift
