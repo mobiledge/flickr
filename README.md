@@ -48,7 +48,13 @@ The app provides support for Dynamic Type, allowing users to adjust the text siz
 
 https://github.com/mobiledge/flickr/assets/6307250/dcf4169e-5c58-46ff-a006-72bddef65401
 
+### Landscape Mode
 
+The grid view's column count is adjusted in response to changes in device orientation. When the device transitions between portrait and landscape modes, the application dynamically updates the columns to either 3 or 2, ensuring usability in both orientations.
+
+| Portrait Mode                                | Landscape Mode                                |
+| -------------------------------------------- | --------------------------------------------- |
+| <img width="565" alt="Screenshot 2024-02-20 at 10 44 37 PM" src="https://github.com/mobiledge/flickr/assets/6307250/40b6a31c-8aa0-43a7-a2d0-f8978f215f3f"> | <img width="1006" alt="Screenshot 2024-02-20 at 10 43 49 PM" src="https://github.com/mobiledge/flickr/assets/6307250/10ae3b13-801c-485e-9315-b1e20f5bcfcc"> |
 
 
 
