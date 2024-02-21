@@ -23,9 +23,11 @@ You can learn more about the Flickr API [here](https://www.flickr.com/services/f
 
 ### Screenshots
 
-| Screenshot 1    | Screenshot 2 |
+These screenshots show the Search Grid View and Detail View of the application.
+
+| Grid View | Detail View |
 | -------- | ------- |
-| ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 17](https://github.com/mobiledge/flickr/assets/6307250/b4c640ce-1b64-41e7-8475-9a242a645dc1) | ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 34](https://github.com/mobiledge/flickr/assets/6307250/97ad8c49-2af7-4003-9e68-e2ff9f19e431) |
+| <img width="565" alt="Screenshot 2024-02-20 at 10 57 00 PM" src="https://github.com/mobiledge/flickr/assets/6307250/02f06c0d-af22-4b5b-94e5-34c4a972f67c"> | <img width="565" alt="Screenshot 2024-02-20 at 10 58 02 PM" src="https://github.com/mobiledge/flickr/assets/6307250/2ccc6ce8-4cb9-48e7-a3a5-888803db2b4c"> |
 
 ### App Loading States
 
