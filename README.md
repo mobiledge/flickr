@@ -38,9 +38,15 @@ The app supports multiple states to provide a dynamic and informative user exper
 
 ### Dark Mode
 
-The app supports dark mode, providing users with a visually comfortable experience in low-light environments, enhancing readability and reducing eye strain.
+The app supports dark mode, providing users with a visually comfortable experience in low-light environments.
 
 https://github.com/mobiledge/flickr/assets/6307250/d4904eea-af9a-4350-a523-bf0666278040
+
+### Dynamic Type
+
+The app provides support for Dynamic Type, allowing users to adjust the text size based on their accessibility preferences.
+
+https://github.com/mobiledge/flickr/assets/6307250/dcf4169e-5c58-46ff-a006-72bddef65401
 
 
 
