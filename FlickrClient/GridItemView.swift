@@ -16,10 +16,12 @@ struct GridItemView: View {
             image.resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: size, height: size)
+                .accessibility(label: Text("Image of \(item.description)"))
         } placeholder: {
             ProgressView()
         }
     }
+
 }
 
 #Preview {
