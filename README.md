@@ -23,15 +23,53 @@ You can learn more about the Flickr API [here](https://www.flickr.com/services/f
 
 ### Screenshots
 
-| Screenshot 1    | Screenshot 2 |
+These screenshots show the Search Grid View and Detail View of the application.
+
+| Grid View | Detail View |
 | -------- | ------- |
-| ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 17](https://github.com/mobiledge/flickr/assets/6307250/b4c640ce-1b64-41e7-8475-9a242a645dc1) | ![Simulator Screenshot - iPhone 15 - 2024-02-19 at 22 36 34](https://github.com/mobiledge/flickr/assets/6307250/97ad8c49-2af7-4003-9e68-e2ff9f19e431) |
+| <img width="565" alt="Screenshot 2024-02-20 at 10 57 00 PM" src="https://github.com/mobiledge/flickr/assets/6307250/02f06c0d-af22-4b5b-94e5-34c4a972f67c"> | <img width="565" alt="Screenshot 2024-02-20 at 10 58 02 PM" src="https://github.com/mobiledge/flickr/assets/6307250/2ccc6ce8-4cb9-48e7-a3a5-888803db2b4c"> |
+
+### App Loading States
+
+The app supports multiple states to provide a dynamic and informative user experience. Here is an overview of the supported states along with screenshots for reference:
+
+| Initial State | Loading State | Empty State | Error State | Loaded State |
+|---------------|---------------|-------------|-------------|--------------|
+| Presented initially when the app is launched. Encourages users to discover photos on Flickr and enter keywords for browsing. | Displayed during data retrieval or any asynchronous operation. Shows a spinner to indicate ongoing loading. | Appears when a search or request returns no results. Displays a predefined search icon to indicate an empty result set. | Shown when an error occurs during data fetching or processing. An error icon and a localized error message provide details about the issue. | Presented when the cotent loads successfully. | 
+| ![1 initial -state](https://github.com/mobiledge/flickr/assets/6307250/e96a14f5-702f-4904-ad7f-ffea70ba5509) | ![2 loading-state](https://github.com/mobiledge/flickr/assets/6307250/5bbaefd3-800a-4ed4-8d76-39bb483b4980) | ![3 empty-state](https://github.com/mobiledge/flickr/assets/6307250/c818b896-5598-45ee-a2ed-2d39ae878bd2) | ![4 error-state](https://github.com/mobiledge/flickr/assets/6307250/01c19b50-958d-4e42-a21a-3a41ffdd994b) | ![00 grid-view](https://github.com/mobiledge/flickr/assets/6307250/854f59ec-2687-4d2d-adc6-fa7a436c9308) |
+
+### Dark Mode
+
+The app supports dark mode, providing users with a visually comfortable experience in low-light environments.
+
+https://github.com/mobiledge/flickr/assets/6307250/d4904eea-af9a-4350-a523-bf0666278040
+
+### Dynamic Type
+
+The app provides support for Dynamic Type, allowing users to adjust the text size based on their accessibility preferences.
+
+https://github.com/mobiledge/flickr/assets/6307250/dcf4169e-5c58-46ff-a006-72bddef65401
+
+### Landscape Mode
+
+The grid view's column count is adjusted in response to changes in device orientation. When the device transitions between portrait and landscape modes, the application dynamically updates the columns to either 3 or 2, ensuring usability in both orientations.
+
+| Portrait Mode                                | Landscape Mode                                |
+| -------------------------------------------- | --------------------------------------------- |
+| <img width="565" alt="Screenshot 2024-02-20 at 10 44 37 PM" src="https://github.com/mobiledge/flickr/assets/6307250/40b6a31c-8aa0-43a7-a2d0-f8978f215f3f"> | <img width="1006" alt="Screenshot 2024-02-20 at 10 43 49 PM" src="https://github.com/mobiledge/flickr/assets/6307250/10ae3b13-801c-485e-9315-b1e20f5bcfcc"> |
+
+
+
 
 ### Technologies Used
 
 - Swift
 - SwiftUI
 - async/await
+
+**HTML Content Rendering**
+
+The app utilizes the [RichText](https://github.com/NuPlay/RichText) third-party framework to display HTML content within Flickr image descriptions. 
 
 ### Installation
 
@@ -40,9 +78,12 @@ You can learn more about the Flickr API [here](https://www.flickr.com/services/f
 3. Build and run the app on your iOS device or simulator.
 
 ### TODO
-- [ ] Support multiple tags
-- [ ] Format pubilished date
-- [ ] Acessibility support
+- [x] Display a progress indicator when loading without blocking the UI
+- [x] Support displaying error states
+- [x] Display formatted published date
+- [x] Support Dynamic Type & Dark Mode
+- [x] Acessibility support (for Images)
+- [x] Support landscape orientations 
 - [ ] Additional Unit tests & UI tests
 - [ ] and more...
 
