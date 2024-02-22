@@ -7,14 +7,14 @@
 
 import Foundation
 
-var isLoggingEnabled = true
-func log(_ items: String?...) {
+public var isLoggingEnabled = true
+public func log(_ items: String?...) {
     guard isLoggingEnabled else {
         return
     }
     debugPrint(items)
 }
 
-func error(_ description: String) -> Error {
+public func error(_ description: String) -> Error {
     return NSError(domain: "AppErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: description])
 }

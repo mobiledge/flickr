@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import RichText
+//import RichText
 
 struct DetailView: View {
     let item: FlickrImage
@@ -50,7 +50,7 @@ struct DetailView: View {
                 VStack(alignment: .leading) {
                     Label("Description", systemImage: "calendar.circle")
                         .font(.headline)
-                    RichText(html: item.description)
+//                    RichText(html: item.description)
                 }
                 .padding(.horizontal)
 
