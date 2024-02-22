@@ -1,7 +1,11 @@
 import XCTest
 @testable import FlickrClient
 
+import Foundation
+
+/// A testing subclass of FlickrAPI that allows controlling the returned data for testing purposes.
 class TestFlickrAPI: FlickrAPI {
+    /// The data that will be returned when the `dispatch` method is called.
     var data = Data()
     override func dispatch(request: URLRequest) async throws -> Data {
         return data
@@ -14,9 +18,6 @@ class FlickrAPITests: XCTestCase {
     override func setUp() {
         super.setUp()
         api = TestFlickrAPI()
-        let url = Bundle.main.url(forResource: "testData", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        api.data = data
     }
 
     override func tearDown() {
@@ -24,37 +25,32 @@ class FlickrAPITests: XCTestCase {
         super.tearDown()
     }
 
+    func testConstructURL() {
+        // Given
+        let path = "/path1/path2/"
+        let queryItems = [URLQueryItem(name: "queryItemName", value: "queryItemValue")]
+
+        // When
+        do {
+            let url = try api.constructURL(path: path, queryItems: queryItems)
+
+            // Then
+            XCTAssertEqual(url.absoluteString, "https://www.flickr.com/path1/path2/?format=json&nojsoncallback=1&queryItemName=queryItemValue")
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
+
     func testSearchImages() async throws {
+        // Given
+        let url = Bundle.main.url(forResource: "testData", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        api.data = data
+
+        // When
         let images = try await api.searchImages(tag: "")
+
+        // Then
         XCTAssertEqual(images.count, 20)
     }
 }
-//    func testFetchImagesWithValidTag() async throws {
-//
-//        api.dispatch(request:) = { req in
-//
-//
-//        }
-//
-//        let validTag = "porcupine"
-//        let images = try await api.fetchImages(tag: validTag)
-//        XCTAssertFalse(images.isEmpty, "Images should not be empty")
-//        XCTAssertEqual(images.count, 20)
-//    }
-//
-//    func testFetchImagesWithEmptyTag() async throws {
-//        let emptyTag = ""
-//        let images = try await api.fetchImages(tag: emptyTag)
-//        XCTAssertTrue(images.isEmpty, "Images should be empty for an empty tag")
-//    }
-//}
-//
-//class MockNetworkClient: NetworkClient {
-//    override func data(from url: URL) async throws -> Data {
-//        guard let url = Bundle.main.url(forResource: "testData", withExtension: "json"),
-//              let data = try? Data(contentsOf: url) else {
-//            throw "Failed to obtain testData!"
-//        }
-//        return data
-//    }
-//}
