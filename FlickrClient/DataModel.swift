@@ -25,7 +25,7 @@ class DataModel: ObservableObject {
         return []
     }
 
-    private let api = FlickrAPI(networkClient: NetworkClient())
+    private let api = FlickrAPI()
 
     func search(tag: String) {
 
@@ -37,13 +37,14 @@ class DataModel: ObservableObject {
         Task {
             do {
                 loadingState = .loading
-                let arr = try await api.fetchImages(tag: tag)
+                let arr = try await api.searchImages(tag: tag)
                 if arr.isEmpty {
                     loadingState = .empty
                 } else {
                     loadingState = .loaded(items: arr)
                 }
             } catch {
+                print(error)
                 let localizedDescription = "Failed to load images. Please try again later."
                 loadingState = .error(localizedDescription: localizedDescription)
             }

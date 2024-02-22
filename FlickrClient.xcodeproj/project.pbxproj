@@ -39,6 +39,7 @@
 		C66791702B8463BA00AFB7D5 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667916F2B8463BA00AFB7D5 /* FlickrAPI.swift */; };
 		C66791712B8463BA00AFB7D5 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667916F2B8463BA00AFB7D5 /* FlickrAPI.swift */; };
 		C66791722B8463BA00AFB7D5 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667916F2B8463BA00AFB7D5 /* FlickrAPI.swift */; };
+		C68085C52B86E1B000C04BDE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68085C42B86E1B000C04BDE /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		C66791632B845AFF00AFB7D5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C667916D2B84634200AFB7D5 /* FlickrAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPITests.swift; sourceTree = "<group>"; };
 		C667916F2B8463BA00AFB7D5 /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
+		C68085C42B86E1B000C04BDE /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				C667915B2B83D8E300AFB7D5 /* APIResponse.swift */,
 				C667915F2B83D8FE00AFB7D5 /* FlickrImage.swift */,
 				C667916F2B8463BA00AFB7D5 /* FlickrAPI.swift */,
+				C68085C42B86E1B000C04BDE /* Utilities.swift */,
 				C667914B2B83BAB800AFB7D5 /* testData.json */,
 				C66791252B83B8BC00AFB7D5 /* Assets.xcassets */,
 				C66791272B83B8BC00AFB7D5 /* Preview Content */,
@@ -314,6 +317,7 @@
 				C66791642B845AFF00AFB7D5 /* DetailView.swift in Sources */,
 				C66791542B83D62B00AFB7D5 /* GridView.swift in Sources */,
 				C66791222B83B8BA00AFB7D5 /* FlickrClientApp.swift in Sources */,
+				C68085C52B86E1B000C04BDE /* Utilities.swift in Sources */,
 				C667915C2B83D8E300AFB7D5 /* APIResponse.swift in Sources */,
 				C66791702B8463BA00AFB7D5 /* FlickrAPI.swift in Sources */,
 			);

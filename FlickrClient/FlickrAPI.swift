@@ -8,48 +8,51 @@
 import Foundation
 
 class FlickrAPI {
-    init(networkClient: NetworkClient) {
-        self.networkClient = networkClient
+    private static let baseURL = "https://www.flickr.com"
+    private static let defaultQueryItems = [URLQueryItem(name: "format", value: "json"), URLQueryItem(name: "nojsoncallback", value: "1")]
+
+    func constructURL(path: String, queryItems: [URLQueryItem]? = nil) throws -> URL {
+        guard var components = URLComponents(string: Self.baseURL) else {
+            throw error("Failed to construct URL!")
+        }
+        components.path = path
+        components.queryItems = Self.defaultQueryItems + (queryItems ?? [])
+        guard let url = components.url else {
+            throw error("Failed to construct URL!")
+        }
+        return url
     }
 
-    // Replaced with mock client in tests
-    let networkClient: NetworkClient
+    func constructRequest(url: URL, httpMethod: String, httpBody: Data?) throws -> URLRequest {
+        var urlRequest: URLRequest = URLRequest(url: url)
+        urlRequest.httpMethod = httpMethod
+        urlRequest.httpBody = httpBody
+        return urlRequest
+    }
 
-    func fetchImages(tag: String) async throws -> [FlickrImage] {
-        // Ignore empty string
-        if tag.isEmpty {
-            return []
-        }
+    func get(path: String, queryItems: [URLQueryItem]? = nil) async throws -> Data {
+        let url = try constructURL(path: path, queryItems: queryItems)
+        let req = try constructRequest(url: url, httpMethod: "GET", httpBody: nil)
+        let data = try await dispatch(request: req)
+        return data
+    }
 
-        // Construct URL
-        guard let url = createURL(withTag: tag) else {
-            throw "Unable to create URL!"
-        }
+    func dispatch(request: URLRequest) async throws -> Data {
+        log(request.url?.absoluteString)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return data
+    }
+}
 
-        // Perform network request
-        let data = try await networkClient.data(from: url)
-
-        // Parse JSON response
+extension FlickrAPI {
+    func searchImages(tag: String) async throws -> [FlickrImage] {
+        let path = "/services/feeds/photos_public.gne"
+        let queryItems = [URLQueryItem(name: "tags", value: tag)]
+        let data = try await get(path: path, queryItems: queryItems)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let response = try decoder.decode(APIResponse.self, from: data)
         return response.items
     }
-
-    func createURL(withTag tag: String) -> URL? {
-        let urlString =  "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags="
-        return URL(string: urlString + tag)
-    }
 }
-
-class NetworkClient {
-    let session = URLSession.shared
-
-    func data(from url: URL) async throws -> Data {
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return data
-    }
-}
-
-extension String: Error {}
