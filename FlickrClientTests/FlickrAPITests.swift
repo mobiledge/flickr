@@ -25,20 +25,16 @@ class FlickrAPITests: XCTestCase {
         super.tearDown()
     }
 
-    func testConstructURL() {
+    func testConstructURL() throws {
         // Given
         let path = "/path1/path2/"
         let queryItems = [URLQueryItem(name: "queryItemName", value: "queryItemValue")]
 
         // When
-        do {
-            let url = try api.constructURL(path: path, queryItems: queryItems)
+        let url = try api.constructURL(path: path, queryItems: queryItems)
 
-            // Then
-            XCTAssertEqual(url.absoluteString, "https://www.flickr.com/path1/path2/?format=json&nojsoncallback=1&queryItemName=queryItemValue")
-        } catch {
-            XCTFail("Unexpected error: \(error)")
-        }
+        // Then
+        XCTAssertEqual(url.absoluteString, "https://www.flickr.com/path1/path2/?format=json&nojsoncallback=1&queryItemName=queryItemValue")
     }
 
     func testSearchImages() async throws {

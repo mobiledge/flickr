@@ -25,8 +25,6 @@ class DataModel: ObservableObject {
         return []
     }
 
-    private let api = FlickrAPI()
-
     func search(tag: String) {
 
         if tag.isEmpty {
@@ -37,7 +35,7 @@ class DataModel: ObservableObject {
         Task {
             do {
                 loadingState = .loading
-                let arr = try await api.searchImages(tag: tag)
+                let arr = try await API.current.searchImages(tag: tag)
                 if arr.isEmpty {
                     loadingState = .empty
                 } else {
