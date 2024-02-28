@@ -3,21 +3,12 @@ import XCTest
 
 import Foundation
 
-/// A testing subclass of FlickrAPI that allows controlling the returned data for testing purposes.
-class TestFlickrAPI: FlickrAPI {
-    /// The data that will be returned when the `dispatch` method is called.
-    var data = Data()
-    override func dispatch(request: URLRequest) async throws -> Data {
-        return data
-    }
-}
-
 class FlickrAPITests: XCTestCase {
-    var api: TestFlickrAPI!
+    var api: API!
 
     override func setUp() {
         super.setUp()
-        api = TestFlickrAPI()
+        api = API(session: API.Session(dispatcher: dispatch(request:)))
     }
 
     override func tearDown() {
@@ -25,28 +16,42 @@ class FlickrAPITests: XCTestCase {
         super.tearDown()
     }
 
-    func testConstructURL() throws {
-        // Given
-        let path = "/path1/path2/"
-        let queryItems = [URLQueryItem(name: "queryItemName", value: "queryItemValue")]
-
-        // When
-        let url = try api.constructURL(path: path, queryItems: queryItems)
-
-        // Then
-        XCTAssertEqual(url.absoluteString, "https://www.flickr.com/path1/path2/?format=json&nojsoncallback=1&queryItemName=queryItemValue")
+    var dispatchData: Data!
+    func dispatch(request: URLRequest) async throws -> (Data, URLResponse) {
+        (dispatchData, URLResponse())
     }
 
     func testSearchImages() async throws {
         // Given
         let url = Bundle.main.url(forResource: "testData", withExtension: "json")!
         let data = try! Data(contentsOf: url)
-        api.data = data
+        dispatchData = data
 
         // When
         let images = try await api.searchImages(tag: "")
 
         // Then
         XCTAssertEqual(images.count, 20)
+    }
+
+    func testSearchImagesEmpty() async throws {
+        // Given
+        let empty = """
+{
+    "title": "Recent Uploads tagged porcupine",
+    "link": "https://www.flickr.com/photos/tags/porcupine/",
+    "description": "",
+    "modified": "2024-02-19T16:26:04Z",
+    "generator": "https://www.flickr.com",
+    "items": []
+}
+"""
+        dispatchData = empty.data(using: .utf8)
+
+        // When
+        let images = try await api.searchImages(tag: "")
+
+        // Then
+        XCTAssertEqual(images.count, 0)
     }
 }
