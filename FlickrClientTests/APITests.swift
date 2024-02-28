@@ -3,7 +3,7 @@ import XCTest
 
 import Foundation
 
-class FlickrAPITests: XCTestCase {
+class APITests: XCTestCase {
     var api: API!
 
     override func setUp() {

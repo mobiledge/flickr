@@ -25,8 +25,8 @@ class API {
         self.session = session
     }
 
-    func newRequest() -> APIRequest {
-        APIRequest(baseURL: baseURL)
+    func newRequest() -> Request {
+        Request(baseURL: baseURL)
             .set(queryParams: defaultQueryItems)
     }
 }
@@ -38,7 +38,7 @@ extension API {
         }
         var dispatcher: (URLRequest) async throws -> (Data, URLResponse)
     }
-    class APIRequest {
+    class Request {
         internal init(baseURL: String) {
             self.baseURL = baseURL
         }
@@ -51,38 +51,38 @@ extension API {
         var urlRequest: URLRequest?
         var session: Session?
 
-        @discardableResult func set(path: String) -> APIRequest {
+        @discardableResult func set(path: String) -> Request {
             self.path = path
             return self
         }
-        @discardableResult func set(queryParams: [URLQueryItem]?) -> APIRequest {
+        @discardableResult func set(queryParams: [URLQueryItem]?) -> Request {
             self.queryParams = queryParams
             return self
         }
-        @discardableResult func add(queryItem: URLQueryItem) -> APIRequest {
+        @discardableResult func add(queryItem: URLQueryItem) -> Request {
             var params = queryParams ?? []
             params.append(queryItem)
             self.queryParams = params
             return self
         }
-        @discardableResult func set(headerParams: [String: String]?) -> APIRequest {
+        @discardableResult func set(headerParams: [String: String]?) -> Request {
             self.headerParams = headerParams
             return self
         }
-        @discardableResult func set(httpMethod: String) -> APIRequest {
+        @discardableResult func set(httpMethod: String) -> Request {
             self.httpMethod = httpMethod
             return self
         }
-        @discardableResult func set(httpBody: Data?) -> APIRequest {
+        @discardableResult func set(httpBody: Data?) -> Request {
             self.httpBody = httpBody
             return self
         }
-        @discardableResult func set(session: Session) -> APIRequest {
+        @discardableResult func set(session: Session) -> Request {
             self.session = session
             return self
         }
 
-        func build() throws -> APIRequest {
+        func build() throws -> Request {
             guard let path = path else {
                 throw APIError.missingPath
             }
@@ -157,15 +157,4 @@ enum APIError: Error {
     case decodingFailed(Error)
 }
 
-extension API {
-    func searchImages(tag: String) async throws -> [FlickrImage] {
-        try await newRequest()
-            .set(path: "/services/feeds/photos_public.gne")
-            .add(queryItem: URLQueryItem(name: "tags", value: tag))
-            .set(httpMethod: "GET")
-            .build()
-            .send(session: session)
-            .decoded(as: APIResponse.self, decoder: defaultDecoder)
-            .items
-    }
-}
+
